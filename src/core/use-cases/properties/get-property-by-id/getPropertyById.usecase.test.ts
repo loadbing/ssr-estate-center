@@ -6,11 +6,14 @@ describe('GetPropertyByIdUseCase', () => {
   let repository: jest.Mocked<IPropertiesRepository>
   let useCase: GetPropertyByIdUseCase
   const mockProperty: Property = {
-    id: '1',
-    title: 'Apartamento',
-    description: 'Apartamento de lujo',
-    price: 350000000,
+    id: '123',
+    code: '01',
+    name: 'Apartamento',
     address: 'Guarne, Antioquia',
+    price: 350000000,
+    year: 2025,
+    images: [],
+    owner: {name: '', phone: ''}
   }
 
   beforeEach(() => {
@@ -27,9 +30,9 @@ describe('GetPropertyByIdUseCase', () => {
   it('should call repository.getById and return a property when found', async () => {
     repository.getById.mockResolvedValueOnce(mockProperty)
 
-    const result = await useCase.execute('1')
+    const result = await useCase.execute('123')
 
-    expect(repository.getById).toHaveBeenCalledWith('1')
+    expect(repository.getById).toHaveBeenCalledWith('123')
     expect(result).toEqual(mockProperty)
   })
 

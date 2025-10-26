@@ -14,11 +14,14 @@ jest.mock('@/infrastructure/api/axiosClient', () => ({
 describe('PropertiesRepository', () => {
   let repository: PropertiesRepository
   const mockProperty: Property = {
-    id: '1',
-    title: 'Apartamento',
-    description: 'Apartamento de lujo',
-    price: 350000000,
+    id: '',
+    code: '01',
+    name: 'Beautiful House',
     address: 'Guarne, Antioquia',
+    price: 350000000,
+    year: 2025,
+    images: [],
+    owner: {name: '', phone: ''}
   }
 
   beforeEach(() => {
@@ -54,12 +57,12 @@ describe('PropertiesRepository', () => {
   })
 
   it('should update a property', async () => {
-    const updatedProperty = { ...mockProperty, title: 'Casa actualizada' }
+    const updatedProperty = { ...mockProperty, name: 'Casa actualizada' }
     ;(axiosClient.put as jest.Mock).mockResolvedValueOnce({ data: updatedProperty })
 
-    const result = await repository.update('1', { title: 'Casa actualizada' })
+    const result = await repository.update('1', { name: 'Casa actualizada' })
 
-    expect(axiosClient.put).toHaveBeenCalledWith('/properties/1', { title: 'Casa actualizada' })
+    expect(axiosClient.put).toHaveBeenCalledWith('/properties/1', { name: 'Casa actualizada' })
     expect(result).toEqual(updatedProperty)
   })
 

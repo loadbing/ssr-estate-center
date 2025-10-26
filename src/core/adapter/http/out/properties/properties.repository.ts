@@ -3,12 +3,8 @@ import { Property } from '@/core/domain/entities/Property'
 import { IPropertiesRepository } from '@/core/domain/interfaces/IPropertiesRepository'
 
 export class PropertiesRepository implements IPropertiesRepository {
-  async getAll(): Promise<Property[]> {
-    console.log(process.env.NEXT_PUBLIC_API_URL);
-    
-    const response = await axiosClient.get<Property[]>('/properties')
-    console.log(response);
-    
+  async getAll(): Promise<Property[]> {    
+    const response = await axiosClient.get<Property[]>('/properties')    
     return response.data
   }
 

@@ -8,8 +8,8 @@ jest.mock('@/core/use-cases/properties/get-all-properties/getAllProperties.useca
 describe('getAllProperties', () => {
   it('should return properties when use case executes successfully', async () => {
     const mockProperties = [
-      { id: '1', title: 'Property 1', description: 'Desc', price: 100, address: 'Street 1' },
-      { id: '2', title: 'Property 2', description: 'Desc', price: 200, address: 'Street 2' },
+      { id: '1', name: 'Property 1', price: 100, address: 'Street 1' },
+      { id: '2', name: 'Property 2', price: 200, address: 'Street 2' },
     ]
 
     ;(GetAllPropertiesUseCase as jest.Mock).mockImplementation(() => ({

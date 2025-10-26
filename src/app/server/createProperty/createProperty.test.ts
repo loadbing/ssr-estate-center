@@ -9,10 +9,13 @@ jest.mock('@/core/use-cases/properties/create-property/createProperty.usecase')
 describe('createProperty', () => {
   const mockProperty: Property = {
     id: '',
-    title: 'Beautiful House',
-    description: 'Lovely countryside house',
-    price: 350000000,
+    code: '01',
+    name: 'Apartamento',
     address: 'Guarne, Antioquia',
+    price: 350000000,
+    year: 2025,
+    images: [],
+    owner: {name: '', phone: ''}
   }
 
   it('should return true when property is created successfully', async () => {

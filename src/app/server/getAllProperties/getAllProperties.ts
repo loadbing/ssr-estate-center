@@ -8,11 +8,9 @@ export const getAllProperties = async () => {
     const propertyRepository = new PropertiesRepository();
     const getAllPropertiesUseCase = new GetAllPropertiesUseCase(propertyRepository);
     const result = await getAllPropertiesUseCase.execute();
-
-    return result 
-  } catch(error) {
-    console.log(error);
     
+    return result 
+  } catch {    
     return []
   }
 }

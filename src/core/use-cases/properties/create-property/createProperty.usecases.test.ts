@@ -7,11 +7,14 @@ describe('CreatePropertyUseCase', () => {
   let repository: jest.Mocked<IPropertiesRepository>
   let useCase: CreatePropertyUseCase
   const mockProperty: Property = {
-    id: '1',
-    title: 'Apartamento',
-    description: 'Apartamento de lujo',
-    price: 350000000,
+    id: '123',
+    code: '01',
+    name: 'Apartamento',
     address: 'Guarne, Antioquia',
+    price: 350000000,
+    year: 2025,
+    images: [],
+    owner: {name: '', phone: ''}
   }
 
   beforeEach(() => {

@@ -9,7 +9,7 @@ describe('getPropertyById', () => {
   const propertyId = '1'
 
   it('should return a property when use case executes successfully', async () => {
-    const mockProperty = { id: propertyId, title: 'Property 1', description: 'Desc', price: 100, address: 'Street 1' }
+    const mockProperty = { id: propertyId, name: 'Property 1', price: 100, address: 'Street 1' }
 
     ;(GetPropertyByIdUseCase as jest.Mock).mockImplementation(() => ({
       execute: jest.fn().mockResolvedValue(mockProperty),

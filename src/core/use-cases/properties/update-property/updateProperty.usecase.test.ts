@@ -6,11 +6,14 @@ describe('UpdatePropertyUseCase', () => {
   let repository: jest.Mocked<IPropertiesRepository>
   let useCase: UpdatePropertyUseCase
   const mockProperty: Property = {
-    id: '1',
-    title: 'Apartamento',
-    description: 'Apartamento de lujo',
-    price: 350000000,
+    id: '123',
+    code: '01',
+    name: 'Apartamento',
     address: 'Guarne, Antioquia',
+    price: 350000000,
+    year: 2025,
+    images: [],
+    owner: {name: '', phone: ''}
   }
 
   beforeEach(() => {
@@ -29,7 +32,7 @@ describe('UpdatePropertyUseCase', () => {
 
     const result = await useCase.execute(mockProperty)
 
-    expect(repository.update).toHaveBeenCalledWith('1', mockProperty)
+    expect(repository.update).toHaveBeenCalledWith('123', mockProperty)
     expect(result).toBe(true)
   })
 

@@ -8,11 +8,14 @@ jest.mock('@/core/use-cases/properties/update-property/updateProperty.usecase')
 
 describe('updateProperty', () => {
   const mockProperty: Property = {
-    id: '1',
-    title: 'Updated House',
-    description: 'Updated description',
-    price: 400000000,
+    id: '',
+    code: '01',
+    name: 'Apartamento',
     address: 'Guarne, Antioquia',
+    price: 350000000,
+    year: 2025,
+    images: [],
+    owner: {name: '', phone: ''}
   }
 
   it('should return true when property is updated successfully', async () => {
