@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { generateToken } from "./server/generateToken/generateToken";
+import ClientLayout from "./clientLayout";
+import Header from "@/components/header";
+
 import "./globals.css";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,10 +27,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const token = generateToken()
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <Header />
+        <ClientLayout token={token}>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );
