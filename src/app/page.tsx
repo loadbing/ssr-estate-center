@@ -1,6 +1,6 @@
 import { getAllProperties } from "./server/getAllProperties/getAllProperties";
-import Loader from "@/components/Loader";
-import Card from "@/components/Card";
+import Loader from "@/components/loader";
+import Card from "@/components/card";
 import { Property } from "@/core/domain/entities/Property";
 
 import styles from "./home.module.css";
