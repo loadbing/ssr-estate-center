@@ -6,6 +6,7 @@ const Loader = () => {
   return (
     <div className={styles.loader}>
       <div className={styles.styles} />
+      <span>Cargando...</span>
     </div>
   )
 }

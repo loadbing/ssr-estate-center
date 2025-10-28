@@ -14,7 +14,7 @@ type CardProps = {
 
 const Card = ({ property: { id, name, price, year, address, images } }: CardProps) => {
   const [currentImage, setCurrentImage] = useState(0)
-  
+
   useEffect(() => {
     if (id && images.length > 1) {
       setTimeout(() => {
@@ -28,6 +28,15 @@ const Card = ({ property: { id, name, price, year, address, images } }: CardProp
     <div className={`${id ? styles.card : styles['card-add']}`} key={id}>
       {id ?
         <>
+          <button className={styles.edit}>
+            <Image
+              key={`edit-${id}-${currentImage}`}
+              src='/edit.svg'
+              alt={name}
+              width={20}
+              height={20}
+            />
+          </button>
           <p>{name} - {year}</p>
           <Image
             key={`${id}-${currentImage}`}

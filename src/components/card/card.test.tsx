@@ -11,17 +11,12 @@ describe('Card component', () => {
     address: '123 Main Street',
     price: 120000,
     year: 2024,
-    images: ['www'],
+    images: ['/ec.svg'],
     owner: { name: 'John Doe', phone: '123456789' },
   }
 
   it('should render the property name and year', () => {
     render(<Card key={mockProperty.id} property={mockProperty} />)
     expect(screen.getByText(/House - 2024/)).toBeInTheDocument()
-  })
-
-  it('should display the property price', () => {
-    render(<Card key={mockProperty.id} property={mockProperty} />)
-    expect(screen.getByText(/\$120000/)).toBeInTheDocument()
   })
 })

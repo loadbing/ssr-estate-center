@@ -1,6 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  position: relative;
   border: 1px solid #000000;
   border-radius: 10px;
   width: 100%;
@@ -43,6 +44,16 @@
 .card > a:hover {
   background-color: #FFFFFF;
   color: #000000;
+}
+
+.edit {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  text-decoration: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
 
 .card-add {

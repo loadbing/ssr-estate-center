@@ -10,7 +10,7 @@ const Footer = () => {
       <Image
         key='add-img'
         src='/ec.svg'
-        alt=""
+        alt="ec"
         width={50}
         height={50}
       />
