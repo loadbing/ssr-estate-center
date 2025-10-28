@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ssr-estate-center (Prueba técnica)
 
-## Getting Started
+Aplicación SSR (Server-Side Rendering) construida con Next.js 16 para la visualización y gestión de propiedades inmobiliarias.
+El proyecto consume la [API RESTful de ms-estate-center](https://ms-estate-center-production.up.railway.app/api) y utiliza React Hook Form y TypeScript para la gestión de estado y formularios.
 
-First, run the development server:
+## Requisitos previos
+
+Asegúrate de tener instalados los siguientes componentes en tu entorno local:
+
+- [Node.js 18+](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
+- [Git](https://git-scm.com/)
+- (Opcional) [Visual Studio Code](https://code.visualstudio.com/) o tu IDE preferido
+
+## Ambiente de Despliegue
+
+El proyecto se encuentra desplegado en la plataforma [Vercel](https://vercel.com).
+
+Este frontend consume los endpoints públicos del backend alojado en [Railway](https://railway.com)
+
+[Estate Center - Web App](https://ssr-estate-center.vercel.app/)
+
+## Estructura del proyecto
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+src/
+ ├─ app/              # Rutas y páginas SSR
+ ├─ components/       # Componentes reutilizables con sus estilos y tests
+ ├─ core/             # Casos de uso, repositorios y dominios
+ ├─ infrastructure/   # Configuraciones de conexiones
+ └─ hooks/            # Custom hooks
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Clonar el repositorio
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+git clone https://github.com/tu-usuario/ssr-estate-center.git
+cd ssr-estate-center 
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Configuración local
 
-## Learn More
+Antes de ejecutar el proyecto localmente, crea un archivo .env en la raíz del proyecto y define las siguientes variables de entorno:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+NEXT_PUBLIC_API_URL=https://ms-estate-center-production.up.railway.app/api
+JWT_SECRET=valor_vercel_env
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Ejecución local
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm install
+npm run dev
+```
 
-## Deploy on Vercel
+Luego abre en el navegador:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[http://localhost:3000](http://localhost:3000)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Licencia
+
+Este proyecto fue desarrollado como parte de una prueba técnica.
+Su uso y distribución están limitados a fines de evaluación y demostración.
