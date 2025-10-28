@@ -4,9 +4,10 @@ import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Property } from "@/core/domain/entities/Property";
 import { useRouter } from "next/navigation";
+import { compressFileToBase64 } from "@/app/utils/compressFile";
+import Loader from "../loader";
 
 import styles from "./propertiesForm.module.css";
-import { compressFileToBase64 } from "@/app/utils/compressFile";
 
 type PropertiesFormProps = {
   defaultValues?: Property,
@@ -15,6 +16,7 @@ type PropertiesFormProps = {
 }
 
 const PropertiesForm = ({ defaultValues, labelButton, sendData }: PropertiesFormProps) => {
+  const [loading, setLoading] = useState(false);
   const [newImages, setNewImages] = useState(defaultValues?.images || []);
   const router = useRouter();
 
@@ -23,12 +25,16 @@ const PropertiesForm = ({ defaultValues, labelButton, sendData }: PropertiesForm
   });
 
   const handleAction = async (formData: FormData) => {
+    setLoading(true)
+
     formData.append("id", defaultValues?.id || '');
     formData.append("images", JSON.stringify(newImages));
 
     if (await sendData(formData)) {
       router.push('/');
     }
+
+    setLoading(false)
   };
 
   const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,13 +51,13 @@ const PropertiesForm = ({ defaultValues, labelButton, sendData }: PropertiesForm
   };
 
   return (
-    <div className={styles['properties-form']}>
+    !loading ? <div className={styles['properties-form']}>
       {labelButton === 'Actualizar' ? <p>
         Actualizar propiedad <br />
         <strong>{`#${defaultValues?.code || ''}`}</strong>
       </p> : <p>Crear propiedad</p>}
 
-      <form action={handleAction} className={styles.form}>
+      <form action={handleAction}>
         <div>
           <label>Nombre de la propiedad</label>
           <input {...register("name", { required: "El nombre de la propiedad es un campo requerido" })} />
@@ -102,7 +108,7 @@ const PropertiesForm = ({ defaultValues, labelButton, sendData }: PropertiesForm
 
         <button type="submit">{labelButton ?? 'Enviar'}</button>
       </form>
-    </div>
+    </div> : <Loader />
   );
 }
 
