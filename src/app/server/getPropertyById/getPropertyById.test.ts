@@ -1,6 +1,7 @@
 import { GetPropertyByIdUseCase } from '@/core/use-cases/properties/get-property-by-id/getPropertyById.usecase'
 import { PropertiesRepository } from '@/core/adapter/http/out/properties/properties.repository'
 import { getPropertyById } from './getPropertyById'
+import { Property } from '@/core/domain/entities/Property'
 
 jest.mock('@/core/adapter/http/out/properties/properties.repository')
 jest.mock('@/core/use-cases/properties/get-property-by-id/getPropertyById.usecase')
@@ -29,6 +30,6 @@ describe('getPropertyById', () => {
 
     const result = await getPropertyById(propertyId)
 
-    expect(result).toEqual({})
+    expect(result).toEqual({} as Property)
   })
 })

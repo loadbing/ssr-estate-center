@@ -1,6 +1,7 @@
 'use server'
 
 import { PropertiesRepository } from "@/core/adapter/http/out/properties/properties.repository";
+import { Property } from "@/core/domain/entities/Property";
 import { GetPropertyByIdUseCase } from "@/core/use-cases/properties/get-property-by-id/getPropertyById.usecase"
 
 export const getPropertyById = async (id: string) => {
@@ -11,6 +12,6 @@ export const getPropertyById = async (id: string) => {
 
     return result 
   } catch {
-    return {}
+    return {} as Property
   }
 }

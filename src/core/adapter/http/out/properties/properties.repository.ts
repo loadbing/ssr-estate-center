@@ -18,14 +18,14 @@ export class PropertiesRepository implements IPropertiesRepository {
     return response.data
   }
 
-  async update(id: string, data: Partial<Property>): Promise<Property> {
-    const response = await axiosClient.put<Property>(`/properties/${id}`, data)
+  async update(id: string, data: Partial<Property>): Promise<string> {
+    const response = await axiosClient.put<string>(`/properties/${id}`, data)
     return response.data
   }
 
   async delete(id: string): Promise<boolean> {
-    await axiosClient.delete(`/properties/${id}`)
+    const response = await axiosClient.delete(`/properties/${id}`)
 
-    return true;
+    return !!response.data;
   }
 }

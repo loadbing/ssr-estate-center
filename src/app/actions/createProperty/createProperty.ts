@@ -1,11 +1,12 @@
 'use server'
 
+import { formDataToProperty } from "@/app/utils/formDataToProperty";
 import { PropertiesRepository } from "@/core/adapter/http/out/properties/properties.repository";
-import { Property } from "@/core/domain/entities/Property";
 import { CreatePropertyUseCase } from "@/core/use-cases/properties/create-property/createProperty.usecase";
 
-export const createProperty = async (property: Property) => {
+export const createProperty = async (formData: FormData) => {
   try {
+    const property = formDataToProperty(formData);
     const propertyRepository = new PropertiesRepository();
     const createPropertyUseCase = new CreatePropertyUseCase(propertyRepository);
 

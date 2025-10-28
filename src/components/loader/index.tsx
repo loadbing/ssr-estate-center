@@ -1,5 +1,3 @@
-'use client'
-
 import styles from "./loader.module.css";
 
 const Loader = () => {

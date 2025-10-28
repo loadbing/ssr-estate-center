@@ -1,5 +1,3 @@
-'use client'
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -11,7 +9,7 @@ const Header = () => {
       <Image
         key='add-img'
         src='/ec.svg'
-        alt=""
+        alt="ec"
         width={80}
         height={80}
       />

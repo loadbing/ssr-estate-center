@@ -1,19 +1,19 @@
-import styles from "./detail.module.css";
-
+import { getPropertyById } from "@/app/server/getPropertyById/getPropertyById";
+import PropertyDetail from "./propertyDetail";
 
 type DetailPageProps = {
-  params: {
-    id: string
-  }
+  params: Promise<{ id: string }>
 }
 
-export default function Detail({ params: { id } }: DetailPageProps) {
+const Detail = async ({ params }: DetailPageProps) => {
+  const { id } = await params;
+  const property = await getPropertyById(id)
 
   return (
-    <div className={styles.detail}>
-      <section id="section-detail" className={styles['section-detail']}>
-        Detail : {id}
-      </section>
-    </div>
+    <section id="detail">
+      <PropertyDetail property={property} />
+    </section>
   );
 }
+
+export default Detail

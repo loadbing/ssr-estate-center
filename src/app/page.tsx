@@ -3,13 +3,12 @@ import Loader from "@/components/loader";
 import Card from "@/components/card";
 import { Property } from "@/core/domain/entities/Property";
 
-import styles from "./home.module.css";
-
-export default async function Home() {
+import styles from "./app.module.css";
+ const App = async () => {
   const allProperties = await getAllProperties();
 
   return (
-    <section id="home" className={styles.home}>
+    <section id="app" className={styles.app}>
       <div className={styles.title}>
         <p>Estas son nuestras propiedades disponibles</p>
         <span>¡Encuentra el lugar perfecto para ti!</span>
@@ -26,3 +25,6 @@ export default async function Home() {
     </section>
   );
 }
+
+
+export default App

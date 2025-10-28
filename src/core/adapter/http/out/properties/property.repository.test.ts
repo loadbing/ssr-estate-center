@@ -57,13 +57,12 @@ describe('PropertiesRepository', () => {
   })
 
   it('should update a property', async () => {
-    const updatedProperty = { ...mockProperty, name: 'Casa actualizada' }
-    ;(axiosClient.put as jest.Mock).mockResolvedValueOnce({ data: updatedProperty })
+    ;(axiosClient.put as jest.Mock).mockResolvedValueOnce({ data: '123' })
 
     const result = await repository.update('1', { name: 'Casa actualizada' })
 
     expect(axiosClient.put).toHaveBeenCalledWith('/properties/1', { name: 'Casa actualizada' })
-    expect(result).toEqual(updatedProperty)
+    expect(result).toEqual('123')
   })
 
   it('should delete a property', async () => {

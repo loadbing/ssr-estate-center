@@ -1,0 +1,68 @@
+.properties-form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 600px;
+  border-radius: 10px;
+  padding: 20px 40px 20px 40px;
+  box-shadow: 3px 3px 3px rgb(219, 219, 219);
+  margin: 30px auto;
+}
+
+.properties-form > p {
+  margin: 0 0 30px 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.properties-form > form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.properties-form > form > div {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.properties-form > form > div > input {
+  width: 400px;
+  font-size: 16px;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #cecece;
+  border-radius: 5px;
+}
+
+.properties-form > form > button {
+  display: flex;
+  margin: auto;
+  padding: 10px;
+  width: 50%;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  justify-content: center;
+  background-color: #000000;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.properties-form > form > button:hover {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+
+@media (max-width: 600px) {
+  .properties-form {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .properties-form > form > div > input {
+    width: 100%;
+  }
+  
+}

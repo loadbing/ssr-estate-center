@@ -6,7 +6,7 @@ export class UpdatePropertyUseCase {
 
   async execute(property: Property): Promise<boolean> {
     const result = await this.repository.update(property.id, property)
-    if (!result.id) throw new Error('Propiedad no actualizada')
+    if (!result) throw new Error('Propiedad no actualizada')
 
     return true
   }

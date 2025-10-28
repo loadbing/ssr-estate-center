@@ -1,4 +1,4 @@
-.home {
+.app {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,5 +28,8 @@
 }
 
 @media (max-width: 600px) {
-
+  .all-properties {
+    grid-template-columns: repeat(1, 90%);
+    margin-bottom: 30px;
+  }
 }

@@ -28,7 +28,7 @@ describe('UpdatePropertyUseCase', () => {
   })
 
   it('should call repository.update and return true when property is updated successfully', async () => {
-    repository.update.mockResolvedValueOnce(mockProperty)
+    repository.update.mockResolvedValueOnce('123')
 
     const result = await useCase.execute(mockProperty)
 
@@ -37,7 +37,7 @@ describe('UpdatePropertyUseCase', () => {
   })
 
   it('should throw an error if property update fails', async () => {
-    repository.update.mockResolvedValueOnce({ ...mockProperty, id: '' })
+    repository.update.mockResolvedValueOnce('')
 
     await expect(useCase.execute(mockProperty)).rejects.toThrow('Propiedad no actualizada')
   })
