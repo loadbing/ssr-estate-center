@@ -1,10 +1,20 @@
+'use client'
+
 import Link from "next/link";
+import Image from "next/image";
 
 import styles from "./header.module.css";
 
-export default function Header() {
+const Header = () => {
   return (
     <header className={styles.header}>
+      <Image
+        key='add-img'
+        src='/ec.svg'
+        alt=""
+        width={80}
+        height={80}
+      />
       <nav className={styles.nav}>
         <Link href="/">Propiedades</Link>
         <Link href="/login">Iniciar sesión</Link>
@@ -12,3 +22,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header

@@ -9,11 +9,11 @@ export const axiosClient = axios.create({
 })
 
 axiosClient.interceptors.request.use(async (config) => {
-  const cookieStore = await cookies()
-  const token = cookieStore.get('token')?.value || ''  
-  config.headers!['Authorization'] = `Bearer ${token}`
+  const cookieStore = await cookies();
+  const token = cookieStore.get('token')?.value || '';
+  config.headers!['Authorization'] = `Bearer ${token}`;
   
-  return config
+  return config;
 }, (error) => {
   return Promise.reject(error)
 })

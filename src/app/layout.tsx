@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { generateToken } from "./server/generateToken/generateToken";
 import ClientLayout from "./clientLayout";
-import Header from "@/components/header";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 import "./globals.css";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,12 +22,12 @@ export const metadata: Metadata = {
   description: "Technical test for Million Luxury",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const token = generateToken()
+  const token = await generateToken()
 
   return (
     <html lang="en">
@@ -36,6 +36,7 @@ export default function RootLayout({
         <ClientLayout token={token}>
           {children}
         </ClientLayout>
+        <Footer />
       </body>
     </html>
   );

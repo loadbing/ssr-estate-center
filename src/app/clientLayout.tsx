@@ -10,13 +10,16 @@ interface ClientLayoutProps {
 
 export default function ClientLayout({ token, children }: ClientLayoutProps) {
   useEffect(() => {
-    if (token) {
+    const tokenValue = Cookies.get('token');
+    if (token && tokenValue !== token) {
       Cookies.set('token', token, {
         expires: 1,
         path: '/',
         secure: true,
         sameSite: 'strict'
       });
+
+      window.location.reload()
     }
   }, [token])
 
