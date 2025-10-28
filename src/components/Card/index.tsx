@@ -14,8 +14,7 @@ type CardProps = {
 
 const Card = ({ property: { id, name, price, year, address, images } }: CardProps) => {
   const [currentImage, setCurrentImage] = useState(0)
-  console.log(id);
-
+  
   useEffect(() => {
     if (id && images.length > 1) {
       setTimeout(() => {
