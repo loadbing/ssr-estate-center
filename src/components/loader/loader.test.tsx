@@ -1,0 +1,17 @@
+import { render, screen } from "@testing-library/react"
+import Loader from "./index"
+import "@testing-library/jest-dom"
+
+describe("Loader Component", () => {
+  it("should render the loader container", () => {
+    render(<Loader />)
+    const loader = screen.getByRole("generic", { hidden: true })
+    expect(loader).toBeInTheDocument()
+  })
+
+  it("should contain an inner animated element", () => {
+    render(<Loader />)
+    const loaderDivs = screen.getAllByRole("generic", { hidden: true })
+    expect(loaderDivs.length).toBeGreaterThan(1)
+  })
+})
