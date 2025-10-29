@@ -15,6 +15,11 @@ jest.mock('@/components/card', () => ({ property }: { property: Property }) => (
 // eslint-disable-next-line react/display-name
 jest.mock('@/components/loader', () => () => <div data-testid="loader">Loading...</div>);
 
+
+jest.mock('next/headers', () => ({
+  cookies: jest.fn(),
+}));
+
 describe('App Component', () => {
 
   afterEach(() => {
@@ -22,6 +27,11 @@ describe('App Component', () => {
   });
 
   test('renders cards when there are properties', async () => {
+    const { cookies } = await import('next/headers');
+    (cookies as jest.Mock).mockResolvedValue({
+      get: jest.fn().mockReturnValue('mock-user'),
+    });
+
     const properties: Property[] = [
       { id: '1', images: ['/img1.jpg'] } as Property,
       { id: '2', images: ['/img2.jpg'] } as Property,
@@ -38,6 +48,11 @@ describe('App Component', () => {
   });
 
   test('renders Loader when there are no properties', async () => {
+    const { cookies } = await import('next/headers');
+    (cookies as jest.Mock).mockResolvedValue({
+      get: jest.fn().mockReturnValue('mock-user'),
+    });
+
     mockedGetAllProperties.mockResolvedValue([]);
 
     render(await App());

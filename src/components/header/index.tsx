@@ -20,7 +20,6 @@ const Header = async () => {
       />
       <nav className={styles.nav}>
         <Link href="/">Propiedades</Link>
-
         {!nickname?.value ?
           <Link href="/login">Iniciar sesión</Link>
           : <Logout nickname={nickname.value} />}

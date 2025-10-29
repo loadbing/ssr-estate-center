@@ -28,7 +28,8 @@ src/
  ├─ components/       # Componentes reutilizables con sus estilos y tests
  ├─ core/             # Casos de uso, repositorios y dominios
  ├─ infrastructure/   # Configuraciones de conexiones
- └─ hooks/            # Custom hooks
+ ├─ hooks/            # Custom hooks
+ └─ utils/            # Utilidades
 ```
 
 ## Clonar el repositorio
@@ -52,6 +53,12 @@ JWT_SECRET=valor_vercel_env
 ```bash
 npm install
 npm run dev
+```
+
+## Ejecución de pruebas unitarias
+
+```bash
+npm run test
 ```
 
 Luego abre en el navegador:

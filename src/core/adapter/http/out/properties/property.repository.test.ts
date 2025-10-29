@@ -21,7 +21,7 @@ describe('PropertiesRepository', () => {
     price: 350000000,
     year: 2025,
     images: [],
-    owner: {name: '', phone: ''}
+    owner: { name: '', phone: '' }
   }
 
   beforeEach(() => {
@@ -30,7 +30,7 @@ describe('PropertiesRepository', () => {
   })
 
   it('should fetch all properties', async () => {
-    ;(axiosClient.get as jest.Mock).mockResolvedValueOnce({ data: [mockProperty] })
+    ; (axiosClient.get as jest.Mock).mockResolvedValueOnce({ data: [mockProperty] })
 
     const result = await repository.getAll()
 
@@ -39,7 +39,7 @@ describe('PropertiesRepository', () => {
   })
 
   it('should fetch a property by id', async () => {
-    ;(axiosClient.get as jest.Mock).mockResolvedValueOnce({ data: mockProperty })
+    ; (axiosClient.get as jest.Mock).mockResolvedValueOnce({ data: mockProperty })
 
     const result = await repository.getById('1')
 
@@ -48,7 +48,7 @@ describe('PropertiesRepository', () => {
   })
 
   it('should create a property', async () => {
-    ;(axiosClient.post as jest.Mock).mockResolvedValueOnce({ data: mockProperty })
+    ; (axiosClient.post as jest.Mock).mockResolvedValueOnce({ data: mockProperty })
 
     const result = await repository.create(mockProperty)
 
@@ -57,7 +57,7 @@ describe('PropertiesRepository', () => {
   })
 
   it('should update a property', async () => {
-    ;(axiosClient.put as jest.Mock).mockResolvedValueOnce({ data: '123' })
+    ; (axiosClient.put as jest.Mock).mockResolvedValueOnce({ data: '123' })
 
     const result = await repository.update('1', { name: 'Casa actualizada' })
 
@@ -66,7 +66,7 @@ describe('PropertiesRepository', () => {
   })
 
   it('should delete a property', async () => {
-    ;(axiosClient.delete as jest.Mock).mockResolvedValueOnce({})
+    ; (axiosClient.delete as jest.Mock).mockResolvedValueOnce({ data: '123' })
 
     const result = await repository.delete('1')
 

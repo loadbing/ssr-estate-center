@@ -8,17 +8,18 @@ import { useRouter } from "next/navigation";
 import styles from "./propertyDetail.module.css";
 
 type PropertyDetailProps = {
-    property: Property
+    property: Property,
+    isAdmin: boolean
 }
 
-const PropertyDetail = ({ property: { id, name, year, address, price, images, owner } }: PropertyDetailProps) => {
+const PropertyDetail = ({ property: { id, name, year, address, price, images, owner }, isAdmin }: PropertyDetailProps) => {
     const { currentImage } = useCurrentImage(id, images)
     const router = useRouter();
 
     return (
         <section id="detail" className={styles.detail}>
             <div className={styles.property}>
-                <button className={styles.edit} onClick={() => router.push(`/edit/${id}`)}>
+                {isAdmin && <button className={styles.edit} onClick={() => router.push(`/edit/${id}`)}>
                     <Image
                         key={`edit-${id}-${currentImage}`}
                         src='/edit.svg'
@@ -26,7 +27,7 @@ const PropertyDetail = ({ property: { id, name, year, address, price, images, ow
                         width={20}
                         height={20}
                     />
-                </button>
+                </button>}
                 <p>{name} - {year}</p>
                 <Image
                     key={`${id}-${currentImage}`}

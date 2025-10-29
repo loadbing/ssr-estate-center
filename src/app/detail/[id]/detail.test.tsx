@@ -12,6 +12,10 @@ jest.mock('./propertyDetail', () => ({ property }: { property: Property }) => (
     <div data-testid="property">{property.name}</div>
 ));
 
+jest.mock('next/headers', () => ({
+    cookies: jest.fn(),
+}));
+
 describe('Detail Component', () => {
 
     afterEach(() => {
@@ -19,6 +23,11 @@ describe('Detail Component', () => {
     });
 
     test('renders property detail when there are values', async () => {
+        const { cookies } = await import('next/headers');
+        (cookies as jest.Mock).mockResolvedValue({
+            get: jest.fn().mockReturnValue('mock-user'),
+        });
+
         const property: Property = { name: 'House' } as Property;
         mockedGetPropertyById.mockResolvedValue(property);
         const params = Promise.resolve({ id: '1' });

@@ -5,6 +5,19 @@ import { createProperty } from './createProperty'
 jest.mock('@/core/adapter/http/out/properties/properties.repository')
 jest.mock('@/core/use-cases/properties/create-property/createProperty.usecase')
 
+jest.mock('@/utils/formDataToProperty', () => ({
+  formDataToProperty: jest.fn(() => ({
+    id: 'mock-id',
+    code: 'mock-code',
+    name: 'Mock Property',
+    address: '123 Mock Street',
+    price: 100000,
+    year: 2023,
+    images: [],
+    owner: { name: 'Mock Owner', phone: '1234567890' },
+  })),
+}));
+
 describe('createProperty', () => {
   const mockFormData: FormData = {} as FormData
 

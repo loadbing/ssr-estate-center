@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Property } from "@/core/domain/entities/Property";
 import { useRouter } from "next/navigation";
-import { compressFileToBase64 } from "@/app/utils/compressFile";
+import { compressFileToBase64 } from "@/utils/compressFile";
 import Loader from "../loader";
 
 import styles from "./propertiesForm.module.css";

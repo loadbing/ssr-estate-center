@@ -1,6 +1,6 @@
 'use server'
 
-import { formDataToProperty } from "@/app/utils/formDataToProperty";
+import { formDataToProperty } from "@/utils/formDataToProperty";
 import { PropertiesRepository } from "@/core/adapter/http/out/properties/properties.repository";
 import { CreatePropertyUseCase } from "@/core/use-cases/properties/create-property/createProperty.usecase";
 

@@ -1,11 +1,21 @@
-import { render, screen } from "@testing-library/react"
-import Header from "./index"
-import "@testing-library/jest-dom"
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import Header from './';
 
-describe("Header Component", () => {
-  it("should render the header container", () => {
-    render(<Header />)
-    const element = screen.getByText(/Propiedades/)
-    expect(element).toBeInTheDocument()
-  })
-})
+jest.mock('next/headers', () => ({
+  cookies: jest.fn(),
+}));
+
+describe('Header Component', () => {
+  it('renders logout when user exists', async () => {
+    const { cookies } = await import('next/headers');
+    (cookies as jest.Mock).mockResolvedValue({
+      get: jest.fn().mockReturnValue('mock-user'),
+    });
+
+    const HeaderComponent = await Header();
+    render(HeaderComponent);
+
+    expect(screen.getByText(/Propiedades/i)).toBeInTheDocument();
+  });
+});

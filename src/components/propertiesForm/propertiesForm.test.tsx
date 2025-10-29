@@ -3,6 +3,10 @@ import { render, screen } from '@testing-library/react'
 import PropertiesForm from './index'
 import { Property } from '@/core/domain/entities/Property'
 
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(),
+}));
+
 describe('PropertiesForm component', () => {
   const mockProperty: Property = {
     id: '1',
@@ -15,10 +19,17 @@ describe('PropertiesForm component', () => {
     owner: { name: 'John Doe', phone: '123456789' },
   }
 
-  it('should render the properties form', () => {
+  it('should render the update form', () => {
+    const sendData = async (formData: FormData): Promise<boolean> => {return true};
+
+    render(<PropertiesForm defaultValues={mockProperty} sendData={sendData} labelButton='Actualizar' />)
+    expect(screen.getByText(/Actualizar propiedad/)).toBeInTheDocument()
+  })
+
+  it('should render the create form', () => {
     const sendData = async (formData: FormData): Promise<boolean> => {return true};
 
     render(<PropertiesForm defaultValues={mockProperty} sendData={sendData} />)
-    expect(screen.getByText(/House - 2024/)).toBeInTheDocument()
+    expect(screen.getByText(/Crear propiedad/)).toBeInTheDocument()
   })
 })

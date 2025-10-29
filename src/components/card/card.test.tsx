@@ -3,6 +3,10 @@ import { render, screen } from '@testing-library/react'
 import Card from './index'
 import { Property } from '@/core/domain/entities/Property'
 
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(),
+}));
+
 describe('Card component', () => {
   const mockProperty: Property = {
     id: '1',
@@ -16,7 +20,7 @@ describe('Card component', () => {
   }
 
   it('should render the property name and year', () => {
-    render(<Card key={mockProperty.id} property={mockProperty} />)
+    render(<Card key={mockProperty.id} property={mockProperty} isAdmin={true} />)
     expect(screen.getByText(/House - 2024/)).toBeInTheDocument()
   })
 })

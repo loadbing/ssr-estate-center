@@ -9,6 +9,10 @@ jest.mock('@/hooks/useCurrentImage', () => ({
   default: jest.fn(),
 }));
 
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(),
+}));
+
 const mockedUseCurrentImage = useCurrentImage as jest.MockedFunction<typeof useCurrentImage>;
 
 describe('PropertyDetail Component', () => {
@@ -30,7 +34,7 @@ describe('PropertyDetail Component', () => {
   test('renders property details correctly', () => {
     mockedUseCurrentImage.mockReturnValue({ currentImage: 0 });
 
-    render(<PropertyDetail property={mockProperty} />);
+    render(<PropertyDetail property={mockProperty} isAdmin={true}/>);
 
     expect(screen.getByText(/House - 2020/)).toBeInTheDocument();
 
